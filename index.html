@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+   
+    <title>Gra Mapa</title>
+</head>
+<body id="body">
+    <div id="map"></div>
+    <div id="menu">
+        <button id="gra"onclick="gra(),znik()">Start</button>
+        <h2 id="h2">Województwo: </h2>
+        <h3 id="h3">Opowiedz</h3>
+        <h2 id="zycia">Życia: </h2>
+        <h2 id="poprawne">Poprawne odpowiedzi: </h2>
+    </div>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+    <script src="woje.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

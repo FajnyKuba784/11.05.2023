@@ -1,0 +1,19 @@
+
+#body{
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: 100vh;
+    grid-template-areas: "mapa menu";
+    margin: 0px;
+}   
+#map{
+    grid-area: mapa;
+    height: 100vh;
+    
+    margin: 0px;
+}
+
+#menu{
+    background-color: aliceblue;
+    grid-area: menu;
+}
