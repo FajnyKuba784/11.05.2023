@@ -52,7 +52,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         function sprawdz(e){
             const layerw = e.target
             console.log(layerw.feature.properties.nazwa, 2)
-
+            
             if(layerw.feature.properties.nazwa==wojewodctwa.features[woje].properties.nazwa){
                 const h3 = document.getElementById("h3")
                 h3.innerHTML = "Poprawna odpowiedz"
@@ -63,18 +63,23 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 const h3 = document.getElementById("h3")
                 h3.innerHTML = "Niepoprawna odpowiedz"
                 zycia--
-                layer.on('click', function() {
-                    // Oblicz środek województwa
-                    var center = turf.centerOfMass(feature.geometry);
-                })
-            }
-            
-            if(zycia==0) koniec()
-
-            document.getElementById("zycia").innerHTML = "Życia: "+zycia
-            document.getElementById("poprawne").innerHTML = "Poprawne odpowiedzi: "+poprawne
-
-            gra()
+                
+                    const poprawnyLayer = geojson.getLayers().find(layer =>layer.feature.properties.nazwa == wojewodctwa.features[woje].properties.nazwa);
+                    const kliknietyLayer = layerw;
+                    
+                    var latlngs = [
+                        poprawnyLayer.getBounds().getCenter(),
+                        kliknietyLayer.getBounds().getCenter()
+                    ];
+                    var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+                }
+                
+                
+                document.getElementById("zycia").innerHTML = "Życia: "+zycia
+                document.getElementById("poprawne").innerHTML = "Poprawne odpowiedzi: "+poprawne
+                
+                if(zycia==0) koniec()
+                gra()
         }
         function koniec(){
             const body = document.getElementById("body")
